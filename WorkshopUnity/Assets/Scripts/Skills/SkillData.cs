@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using WU.Monsters;
 
 namespace WU.Skills
 {
@@ -16,8 +17,10 @@ namespace WU.Skills
         
         [field: SerializeField]
         public Sprite Icon { get; private set; }
+        
+        [field: SerializeField]
+        public SkillTarget Targets { get; private set; }
 
-
-        public abstract ISkill Convert();
+        public abstract ISkill Convert(Monster owner);
     }
 }

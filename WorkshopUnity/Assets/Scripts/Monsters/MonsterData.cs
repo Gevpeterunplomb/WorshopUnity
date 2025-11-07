@@ -16,15 +16,15 @@ namespace WU.Monsters
         
         [field: SerializeField]
         public int MaxSpiritForce { get; private set; }
+
+        [field: SerializeField] 
+        public int Strength { get; private set; } = 1;
         
         [field: SerializeField]
-        public int Strength { get; private set; }
+        public int Defence { get; private set; } = 1;
         
         [field: SerializeField]
-        public int Defence { get; private set; }
-        
-        [field: SerializeField]
-        public int Speed { get; private set; }
+        public int Speed { get; private set; } = 1;
         
         [field: SerializeField]
         public GameObject Prefab { get; private set; }

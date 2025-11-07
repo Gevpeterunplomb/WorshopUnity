@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using WU.Monsters;
 
@@ -61,6 +62,50 @@ namespace WU.Level
             }
             
             return false;
+        }
+
+        public List<Monster> GetEnemyTeamMonsters()
+        {
+            List<Monster> teamMonsters = new List<Monster>();
+            
+            for (int i = 0; i < Monsters.Length; i++)
+            {
+                Monster monster = Monsters[i];
+                if(monster is PlayerMonster)
+                    teamMonsters.Add(monster);
+            }
+            
+            return teamMonsters;
+        }
+
+        public List<Monster> GetPlayerTeamMonsters()
+        {
+            List<Monster> teamMonsters = new List<Monster>();
+            
+            for (int i = 0; i < Monsters.Length; i++)
+            {
+                Monster monster = Monsters[i];
+                if(monster is EnemyMonster)
+                    teamMonsters.Add(monster);
+            }
+            
+            return teamMonsters;
+        }
+
+        public List<Monster> GetSameTeamMonsters(Monster from)
+        {
+            if (from is PlayerMonster)
+                return GetPlayerTeamMonsters();
+            else
+                return GetEnemyTeamMonsters();
+        }
+        
+        public List<Monster> GetOtherTeamMonsters(Monster from)
+        {
+            if (from is PlayerMonster)
+                return GetEnemyTeamMonsters();
+            else
+                return GetPlayerTeamMonsters();
         }
     }
 }
