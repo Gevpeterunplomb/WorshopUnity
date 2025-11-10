@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,18 +16,31 @@ namespace WU.Level
         
         public Monster[] Monsters { get; private set; }
         public bool IsDoingBattle { get; private set; }
-        
+
+        private void Start()
+        {
+            Begin();
+        }
+
         public void Begin()
         {
+            
             Monsters = new Monster[MonstersData.Length];
             for (int i = 0; i < MonstersData.Length; i++)
             {
                 MonsterData monsterData = MonstersData[i];
                 GameObject instance = Instantiate(monsterData.Prefab, transform);
-                
+
                 if (instance.TryGetComponent(out Monster monster))
+                {
                     monster.Initialize(this, monsterData);
+                    Monsters[i] = monster;
+                }
             }
+        }
+
+        public void Execute()
+        { 
             StartCoroutine(BattleRoutine());
         }
 
@@ -34,22 +48,29 @@ namespace WU.Level
         {
             IsDoingBattle = true;
 
-            int index = 0;
-
+            List<Monster> sortedMonster = new(Monsters);
+            
+            sortedMonster.Sort(CompareMonsterSpeed);
+            sortedMonster.Reverse();
+            
             while (IsAnyMonsterDead() == false)
             {
-                Monster monsterTurn = Monsters[index];
-                monsterTurn.BeginTurn();
+                foreach (var monsterTurn in sortedMonster)
+                {
+                    monsterTurn.BeginTurn();
 
-                yield return new WaitUntil(monsterTurn.IsTurnDone);
+                    yield return new WaitUntil(monsterTurn.IsTurnDone);
 
-                monsterTurn.EndTurn();
-                index++;
-                if(index >= Monsters.Length)
-                    index = 0;
+                    monsterTurn.EndTurn();
+                }
             }
             
             IsDoingBattle = false;
+        }
+
+        private int CompareMonsterSpeed(Monster a, Monster b)
+        {
+            return a.CurrentSpeed.CompareTo(b.CurrentSpeed);
         }
 
         private bool IsAnyMonsterDead()
@@ -71,7 +92,7 @@ namespace WU.Level
             for (int i = 0; i < Monsters.Length; i++)
             {
                 Monster monster = Monsters[i];
-                if(monster is PlayerMonster)
+                if(monster is EnemyMonster)
                     teamMonsters.Add(monster);
             }
             
@@ -85,7 +106,7 @@ namespace WU.Level
             for (int i = 0; i < Monsters.Length; i++)
             {
                 Monster monster = Monsters[i];
-                if(monster is EnemyMonster)
+                if(monster is PlayerMonster)
                     teamMonsters.Add(monster);
             }
             

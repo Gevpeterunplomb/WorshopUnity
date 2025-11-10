@@ -11,6 +11,7 @@ namespace WU.Monsters
         {
             base.BeginTurn();
             Debug.Log("Player turn");
+            isTurnDone = true;
         }
 
         public override void EndTurn()
@@ -24,7 +25,7 @@ namespace WU.Monsters
                 return;
 
             ISkill skill = null;
-            
+            /*
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 skill = Skills[0];
             if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -33,7 +34,7 @@ namespace WU.Monsters
                 skill = Skills[2];
             if (Input.GetKeyDown(KeyCode.Alpha4))
                 skill = Skills[3];
-
+            */
             if (skill != null)
             {
                 List<Monster> targets = skill.GetTargets();

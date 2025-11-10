@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using WU.Skills;
 
 namespace WU.Monsters
@@ -8,7 +9,7 @@ namespace WU.Monsters
         public override void BeginTurn()
         {
             base.BeginTurn();
-            
+            Debug.Log("Enemy turn");
             int rand = UnityEngine.Random.Range(0, Skills.Length);
             ISkill skill = Skills[rand];
 

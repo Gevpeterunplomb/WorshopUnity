@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b54c072a4a9a7004287ab109ef7c8d3a, type: 3}
-  m_Name: New Monster Data
+  m_Name: EnemyData
   m_EditorClassIdentifier: WU.Core::WU.Monsters.MonsterData
   <Title>k__BackingField: 
   <Description>k__BackingField: 
-  <MaxHealth>k__BackingField: 0
-  <MaxSpiritForce>k__BackingField: 0
-  <Strength>k__BackingField: 0
-  <Defence>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <Prefab>k__BackingField: {fileID: 0}
+  <MaxHealth>k__BackingField: 5
+  <MaxSpiritForce>k__BackingField: 2
+  <Strength>k__BackingField: 1
+  <Defence>k__BackingField: 1
+  <Speed>k__BackingField: 2
+  <Prefab>k__BackingField: {fileID: 551038110805108210, guid: f320f774244a80a439354a7f4c95f1ea, type: 3}
   <Icon>k__BackingField: {fileID: 0}
   <Skills>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ba694046ca196c84ca7e83dfca737498, type: 2}

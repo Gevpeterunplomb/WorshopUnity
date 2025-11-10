@@ -8,6 +8,7 @@ namespace WU.Monsters
     {
         [field: SerializeField]
         public string Title { get; private set;}
+        
         [field: SerializeField, TextArea]
         public string Description { get; private set; }
         
