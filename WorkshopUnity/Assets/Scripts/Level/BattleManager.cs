@@ -14,7 +14,17 @@ namespace WU.Level
         [field: SerializeField, Range(0, 100)]
         public int SpiritForceRegeneration { get; private set; }
         
+        public int MaxOvercharge {get; private set;}
+        
+        public int CurrentOvercharge {get; private set;}
+        
         public Monster[] Monsters { get; private set; }
+        
+        [field: SerializeField]
+        private Transform EnemySpawnPoint;
+        
+        [field: SerializeField]
+        private Transform PlayerSpawnPoint;
         public bool IsDoingBattle { get; private set; }
 
         private void Start()
@@ -24,12 +34,15 @@ namespace WU.Level
 
         public void Begin()
         {
+            Debug.Log("Battle Begin");
             
             Monsters = new Monster[MonstersData.Length];
             for (int i = 0; i < MonstersData.Length; i++)
             {
                 MonsterData monsterData = MonstersData[i];
-                GameObject instance = Instantiate(monsterData.Prefab, transform);
+                GameObject instance = monsterData.Prefab.TryGetComponent(out PlayerMonster playerMonster) ? 
+                    Instantiate(monsterData.Prefab, PlayerSpawnPoint.position, PlayerSpawnPoint.rotation):
+                    Instantiate(monsterData.Prefab, EnemySpawnPoint.position, EnemySpawnPoint.rotation);
 
                 if (instance.TryGetComponent(out Monster monster))
                 {
@@ -41,7 +54,13 @@ namespace WU.Level
 
         public void Execute()
         { 
+            Debug.Log("Battle Execute");
             StartCoroutine(BattleRoutine());
+        }
+
+        public void End()
+        {
+            Debug.Log("Battle end");
         }
 
         private IEnumerator BattleRoutine()
@@ -62,6 +81,8 @@ namespace WU.Level
                     yield return new WaitUntil(monsterTurn.IsTurnDone);
 
                     monsterTurn.EndTurn();
+                    
+                    
                 }
             }
             

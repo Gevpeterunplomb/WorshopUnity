@@ -21,7 +21,7 @@ namespace WU.Monsters
 
         public override void EndTurn()
         {
-            
+            Debug.Log("Enemy turn end");
         }
     }
 }

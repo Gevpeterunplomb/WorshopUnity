@@ -41,7 +41,7 @@ namespace WU.Skills
 
         public virtual void UseAgainst(List<Monster> targets)
         {
-            SkillOwner.AddOrRemoveSpiritForce(SkillData.SpiritForceCost);
+            SkillOwner.AddOrRemoveSpiritForce(-SkillData.SpiritForceCost);
         }
     }
 }

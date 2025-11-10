@@ -16,7 +16,7 @@ namespace WU.Monsters
         public int MaxHealth { get; private set; }
         
         [field: SerializeField]
-        public int MaxSpiritForce { get; private set; }
+        public int MaxSpiritForce {get; private set;}
 
         [field: SerializeField] 
         public int Strength { get; private set; } = 1;

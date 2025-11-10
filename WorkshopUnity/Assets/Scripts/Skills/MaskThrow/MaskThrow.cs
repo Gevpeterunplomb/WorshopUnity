@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using WU.Monsters;
 
 namespace WU.Skills.MaskThrow
@@ -15,9 +16,12 @@ namespace WU.Skills.MaskThrow
             base.UseAgainst(targets);
             
             int realDamage = SkillData.Damage * SkillOwner.CurrentStrength;
-            
             foreach (Monster monster in targets)
+            {
+                Debug.Log($"{SkillOwner} : {monster.CurrentHealth}");
                 monster.Damage(realDamage);
+                Debug.Log($"{monster} HP : {monster.CurrentHealth}");
+            }
         }
     }
 }
