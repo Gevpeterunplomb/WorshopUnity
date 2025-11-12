@@ -7,6 +7,8 @@ namespace WU.Skills
     public abstract class Skill<T> : ISkill 
         where T : SkillData
     {
+        public SkillData Data => SkillData;
+        
         public T SkillData { get; set; }
         public Monster SkillOwner { get; private set; }
 
@@ -16,6 +18,7 @@ namespace WU.Skills
 
             SkillData = data;
         }
+
 
         public List<Monster> GetTargets()
         {

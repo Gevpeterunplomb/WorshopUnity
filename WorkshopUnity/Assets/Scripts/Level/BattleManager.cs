@@ -8,15 +8,18 @@ namespace WU.Level
 {
     public class BattleManager : MonoBehaviour
     {
+        public event Action<Monster> OnMonsterTurnStarts; 
+        public event Action<Monster> OnMonsterTurnEnds;
+        
         [field: SerializeField]
         public MonsterData[] MonstersData { get; private set; }
         
         [field: SerializeField, Range(0, 100)]
         public int SpiritForceRegeneration { get; private set; }
         
-        public int MaxOvercharge {get; private set;}
+        public int MaxOvercharge { get; private set;}
         
-        public int CurrentOvercharge {get; private set;}
+        public int CurrentOvercharge { get; private set;}
         
         public Monster[] Monsters { get; private set; }
         
@@ -27,9 +30,13 @@ namespace WU.Level
         private Transform PlayerSpawnPoint;
         public bool IsDoingBattle { get; private set; }
 
-        private void Start()
+        private IEnumerator Start()
         {
             Begin();
+
+            yield return new WaitForSeconds(1);
+            
+            Execute();
         }
 
         public void Begin()
@@ -50,6 +57,7 @@ namespace WU.Level
                     Monsters[i] = monster;
                 }
             }
+            
         }
 
         public void Execute()
@@ -77,12 +85,12 @@ namespace WU.Level
                 foreach (var monsterTurn in sortedMonster)
                 {
                     monsterTurn.BeginTurn();
+                    OnMonsterTurnStarts?.Invoke(monsterTurn);
 
                     yield return new WaitUntil(monsterTurn.IsTurnDone);
 
                     monsterTurn.EndTurn();
-                    
-                    
+                    OnMonsterTurnEnds?.Invoke(monsterTurn);
                 }
             }
             

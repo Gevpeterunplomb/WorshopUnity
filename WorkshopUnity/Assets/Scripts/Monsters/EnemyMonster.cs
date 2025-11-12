@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using WU.Skills;
 
@@ -9,19 +10,26 @@ namespace WU.Monsters
         public override void BeginTurn()
         {
             base.BeginTurn();
-            Debug.Log("Enemy turn");
+            StartCoroutine(EnemyTurnRoutine());
+        }
+
+        private IEnumerator EnemyTurnRoutine()
+        {
+            Debug.Log("Enemy starting turn...");
+            yield return new WaitForSeconds(2);
+            
             int rand = UnityEngine.Random.Range(0, Skills.Length);
             ISkill skill = Skills[rand];
 
             List<Monster> targets = skill.GetTargets();
             skill.UseAgainst(targets);
-            
-            isTurnDone = true;
-        }
 
-        public override void EndTurn()
-        {
-            Debug.Log("Enemy turn end");
+            Debug.Log($"Enemy chose skill {skill.Data.name}");
+            yield return new WaitForSeconds(2);
+
+            isTurnDone = true;
+            
+            Debug.Log("Enemy ending turn...");
         }
     }
 }

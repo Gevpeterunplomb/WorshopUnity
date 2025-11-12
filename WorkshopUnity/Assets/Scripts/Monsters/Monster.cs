@@ -91,6 +91,7 @@ namespace WU.Monsters
 
         public bool IsTurnDone() => isTurnDone;
 
+        
         public virtual void BeginTurn()
         {
             isTurnDone = false;

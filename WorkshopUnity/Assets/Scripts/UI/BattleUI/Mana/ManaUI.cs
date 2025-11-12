@@ -1,19 +1,21 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using WU.Monsters;
 
-namespace WU
+namespace WU.UI.BattleUI.Mana
 {
     public class ManaUI : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
+        [SerializeField] private Image fill;
+        [SerializeField] private TMP_Text manaText;
 
-        // Update is called once per frame
-        void Update()
+        public void Initialize(PlayerMonster playerMonster)
         {
-        
+            manaText.text = playerMonster.CurrentSpiritForce.ToString();
+            fill.fillAmount = (float)playerMonster.CurrentSpiritForce / playerMonster.MaxSpiritForce;
+            
+            
         }
     }
 }

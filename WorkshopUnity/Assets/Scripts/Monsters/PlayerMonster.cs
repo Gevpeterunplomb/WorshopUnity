@@ -7,16 +7,14 @@ namespace WU.Monsters
 {
     public class PlayerMonster : Monster
     {
-        public event Action<int> skillUse;
+        public event Action<ISkill> OnSkillUsed;
+        
         public override void BeginTurn()
         {
             base.BeginTurn();
             Debug.Log("Player turn begin");
-            Debug.Log($"Mana before spell : {CurrentSpiritForce}");
-            //Index a modifier selon le skill choisit
-            AttackWithSkill(0);
-            Debug.Log($"Mana after spell : {CurrentSpiritForce}");
-            isTurnDone = true;
+            isTurnDone = false;
+            
         }
 
 
@@ -24,39 +22,15 @@ namespace WU.Monsters
         {
             Debug.Log("Player turn end");
         }
+        
+        public void AttackWithSkill(int skillIndex) => AttackWithSkill(Skills[skillIndex]);
 
-        private void AttackWithSkill(int skillIndex)
+        public void AttackWithSkill(ISkill skill)
         {
-            skillUse?.Invoke(skillIndex);
-            List<Monster> otherTeam = Skills[skillIndex].GetTargets();
-            Skills[skillIndex].UseAgainst(otherTeam);
+            List<Monster> otherTeam = skill.GetTargets();
+            skill.UseAgainst(otherTeam);
             
-            
-        }
-        private void Update()
-        {
-            if(!IsPlaying)
-                return;
-
-            ISkill skill = null;
-            /*
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                skill = Skills[0];
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                skill = Skills[1];
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-                skill = Skills[2];
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-                skill = Skills[3];
-            */
-            if (skill != null)
-            {
-                List<Monster> targets = skill.GetTargets();
-                skill.UseAgainst(targets);
-                
-                TriggerTurnEnd();
-            }
-
+            OnSkillUsed?.Invoke(skill);
         }
 
         public void TriggerTurnEnd()
