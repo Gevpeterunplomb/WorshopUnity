@@ -54,6 +54,11 @@ namespace WU.Monsters
             AddOrRemoveHealth(-realDamage);
         }
 
+        public void SetHealth(int amount)
+        {
+            CurrentHealth = amount;
+        }
+
         public void Heal(int amount)
         {
             AddOrRemoveHealth(amount);
