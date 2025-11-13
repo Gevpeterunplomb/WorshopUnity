@@ -62,6 +62,9 @@ namespace WU.Level
             yield return new WaitForSeconds(1);
             
             Execute();
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void Begin()
@@ -103,7 +106,7 @@ namespace WU.Level
 
         public void End()
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Exploration");
             Debug.Log("Battle end");
         }
 

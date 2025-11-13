@@ -1,21 +1,19 @@
 using UnityEngine;
+using WU.Inventory;
+using WU.Inventory.Data;
 
 public class DestroyableObject : MonoBehaviour
 {
     [Header("Destruction Settings")]
     [TextArea]
-    public string messageOnDestroy = "Objet détruit !"; 
+    public string messageOnDestroy = "Objet détruit !";
 
-    public string itemName = "Objet";
-    [TextArea]
-    public string itemDescription = "Description";
-
+    [SerializeField]
+    private InventoryItemData data;
+    
     void OnDestroy()
-    {
-        // Ajoute l'objet dans l'inventaire
-        if (InventoryManager.Instance != null)
-        {
-            InventoryManager.Instance.AddItemToInventory(itemName, itemDescription);
-        }
+    { 
+        if(data)
+            Inventory.Instance.AddOrRemoveItem(data, 1);
     }
 }

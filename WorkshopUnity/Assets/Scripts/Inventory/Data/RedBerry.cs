@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using WU.Level;
 using WU.Monsters;
 
 namespace WU.Inventory.Data
@@ -8,10 +9,10 @@ namespace WU.Inventory.Data
     {
         [field: SerializeField]
         public int HealAmount { get; private set; }
-        
-        protected override void Use(Monster monster)
+
+        public override void Use(BattleManager manager)
         {
-            monster.AddOrRemoveHealth(HealAmount);
+            manager.currentMonster.AddOrRemoveHealth(HealAmount);
         }
     }
 }
