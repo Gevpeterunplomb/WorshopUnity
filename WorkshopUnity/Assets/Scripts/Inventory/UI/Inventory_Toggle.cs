@@ -8,6 +8,9 @@ public class InventoryToggle : MonoBehaviour
     [SerializeField] private player_controller playerController;       // script joueur
     [SerializeField] private CanvasGroup cursorCanvasGroup;            // UI curseur
 
+    [SerializeField]
+    private InventoryUI inventoryUI;
+    
     [Header("Settings")]
     [SerializeField] private KeyCode toggleKey = KeyCode.E;
 
@@ -60,6 +63,8 @@ public class InventoryToggle : MonoBehaviour
 
             if (playerController != null)
                 playerController.canMove = true;
+            
+            Time.timeScale = 1;
 
             // Verrouille la souris
             Cursor.lockState = CursorLockMode.Locked;
@@ -84,6 +89,9 @@ public class InventoryToggle : MonoBehaviour
 
             if (playerController != null)
                 playerController.canMove = false;
+            
+            inventoryUI.Open();
+            Time.timeScale = 0;
 
             // curseur
             Cursor.lockState = CursorLockMode.None;

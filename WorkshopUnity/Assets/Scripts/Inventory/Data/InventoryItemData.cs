@@ -17,5 +17,6 @@ namespace WU.Inventory.Data
 
 
         public abstract void Use(BattleManager manager);
+        
     }
 }
