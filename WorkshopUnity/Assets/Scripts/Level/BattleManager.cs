@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WU.Monsters;
 using WU.Skills;
 
@@ -102,6 +103,7 @@ namespace WU.Level
 
         public void End()
         {
+            SceneManager.LoadScene("SampleScene");
             Debug.Log("Battle end");
         }
 

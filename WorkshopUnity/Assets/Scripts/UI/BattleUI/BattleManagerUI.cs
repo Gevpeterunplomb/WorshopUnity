@@ -13,6 +13,8 @@ namespace WU.UI.BattleUI
 {
     public class BattleManagerUI : MonoBehaviour
     {
+        public BattleManager BattleManager => battleManager;
+        
         [SerializeField]
         private BattleManager battleManager;
 

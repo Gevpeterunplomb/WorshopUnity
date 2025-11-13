@@ -91,7 +91,7 @@ namespace WU.Monsters
 
         private void Die()
         {
-            
+            BattleManager.End();
         }
 
         public bool IsTurnDone() => isTurnDone;
