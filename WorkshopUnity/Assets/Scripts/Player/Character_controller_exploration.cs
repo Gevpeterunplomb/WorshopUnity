@@ -42,8 +42,8 @@ public class player_controller : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         currentSpeed = walkSpeed;
 

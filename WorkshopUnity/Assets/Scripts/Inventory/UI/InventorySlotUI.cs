@@ -1,28 +1,28 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using WU.Inventory;
+using WU.Inventory.Data;
 
 public class InventorySlotUI : MonoBehaviour, IPointerClickHandler
 {
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI itemText;
 
-    [HideInInspector] public string itemName;
-    [HideInInspector] public int quantity = 1;
-    [HideInInspector] public string description;
+    private string itemName;
+    private int quantity = 1;
+    private string description;
 
-    public void InitializeSlot(string name, string desc)
-    {
-        itemName = name;
-        description = desc;
-        quantity = 1;
-        UpdateText();
-    }
+    private InventoryUI manager;
 
-    public void AddOne()
+    public void InitializeSlot(InventoryUI inventoryUI, InventoryItemData data, int qtt)
     {
-        quantity++;
+        manager = inventoryUI;
+        itemName = data.Title;
+        description = data.Description;
+        quantity = qtt;
         UpdateText();
+
     }
 
     private void UpdateText()
@@ -34,7 +34,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler
     // slot cliqué
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (InventoryManager.Instance != null)
-            InventoryManager.Instance.ShowDescription(description);
+        
+        if (manager != null)
+            manager.ShowDescription(description);
     }
 }
