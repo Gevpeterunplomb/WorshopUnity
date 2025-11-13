@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using WU.Monsters;
 
 namespace WU.UI.BattleUI.MainPanel
@@ -24,7 +25,7 @@ namespace WU.UI.BattleUI.MainPanel
         
         public void Leave()
         {
-            
+            managerUI.BattleManager.End();
         }
     }
 }

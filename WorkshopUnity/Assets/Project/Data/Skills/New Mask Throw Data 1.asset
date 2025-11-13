@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: WU.Core::WU.Skills.MaskThrow.MaskThrowData
   <Name>k__BackingField: Mask throw 2
   <Description>k__BackingField: 
-  <SpiritForceCost>k__BackingField: 4
-  <OverchargeGain>k__BackingField: 0
+  <SpiritForceCost>k__BackingField: 5
+  <OverchargeGain>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   <Targets>k__BackingField: 2
   <Damage>k__BackingField: 2

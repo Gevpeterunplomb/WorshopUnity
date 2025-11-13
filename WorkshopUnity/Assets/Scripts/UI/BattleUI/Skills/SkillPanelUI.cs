@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using WU.Level;
 using WU.Monsters;
 using WU.Skills;
 
@@ -16,9 +18,12 @@ namespace WU.UI.BattleUI.Skills
 
         private BattleManagerUI manager;
         
+        private PlayerMonster playerMonster;
+        
         public override void Initialize(BattleManagerUI managerUI, PlayerMonster playerMonster)
         {
             manager = managerUI;
+            this.playerMonster = playerMonster;
             foreach (Transform t in skillButtonsParent)
                 Destroy(t.gameObject);
 
@@ -33,7 +38,7 @@ namespace WU.UI.BattleUI.Skills
             
             overchargeUI.Initialize(playerMonster);
         }
-
+        
         public void GoBack()
         {
             manager.OpenMainPanel();

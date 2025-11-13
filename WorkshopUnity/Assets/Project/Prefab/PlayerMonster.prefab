@@ -126,3 +126,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efecb28a02b64947b6829e1343a8c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: WU.Core::WU.Monsters.PlayerMonster
+  evolutionData: {fileID: 11400000, guid: f723f5ec84ed07349b125f8772140b1e, type: 2}
