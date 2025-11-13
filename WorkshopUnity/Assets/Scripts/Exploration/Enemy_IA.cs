@@ -63,6 +63,8 @@ public class EnemyAI : MonoBehaviour
         if (c.collider.CompareTag("Player"))
         {
             Debug.Log("mob à touché coulé");
+            Cursor.lockState = 0;
+            Cursor.visible = true;
             SceneManager.LoadScene("FightScene");
         }
     }
