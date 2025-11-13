@@ -2,14 +2,14 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private Transform contentParent; 
     [SerializeField] private GameObject inventorySlotPrefab; 
     [SerializeField] private TextMeshProUGUI descriptionText;
 
-    public static InventoryManager Instance; 
+    public static InventoryUI Instance; 
 
     // stockage des slots
     private Dictionary<string, InventorySlotUI> slots = new Dictionary<string, InventorySlotUI>();

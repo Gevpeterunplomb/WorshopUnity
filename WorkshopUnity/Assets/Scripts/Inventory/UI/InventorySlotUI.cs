@@ -34,7 +34,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler
     // slot cliqué
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (InventoryManager.Instance != null)
-            InventoryManager.Instance.ShowDescription(description);
+        if (InventoryUI.Instance != null)
+            InventoryUI.Instance.ShowDescription(description);
     }
 }
