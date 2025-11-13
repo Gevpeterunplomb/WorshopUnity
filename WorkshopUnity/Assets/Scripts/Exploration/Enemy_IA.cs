@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // 👈 nécessaire pour changer de scène
 
 public class EnemyAI : MonoBehaviour
 {
@@ -6,20 +7,20 @@ public class EnemyAI : MonoBehaviour
     public float speed = 3f;              // Vitesse patrouille
     public float chaseSpeed = 6f;         // Vitesse poursuite
     public float patrolRadius = 5f;       // Rayon de patrouille
-    public float detectionRange = 8f;     // detection du mob
-    public float changePatrolTime = 3f;   // changement direction quand balade
-    
-    Transform player;
-    Vector3 patrolTarget;
-    float patrolTimer;
-    Rigidbody rb;
+    public float detectionRange = 8f;     // Distance de détection du joueur
+    public float changePatrolTime = 3f;   // Temps avant changement de direction
+
+    private Transform player;
+    private Vector3 patrolTarget;
+    private float patrolTimer;
+    private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        // Initialise un premier point de patrouille
+        // Initialise un premier point
         NewPatrolPoint();
     }
 
@@ -30,43 +31,41 @@ public class EnemyAI : MonoBehaviour
         float dist = Vector3.Distance(transform.position, player.position);
         
         Vector3 dir = (dist <= detectionRange ? player.position : patrolTarget) - transform.position;
-
-        // Change vitesse en fonction du mode
         float moveSpeed = dist <= detectionRange ? chaseSpeed : speed;
 
         // Déplacement
         rb.MovePosition(transform.position + dir.normalized * moveSpeed * Time.fixedDeltaTime);
-
-        // Patrouille si joueur trop loin
+        
         if (dist > detectionRange)
         {
             patrolTimer -= Time.fixedDeltaTime;
 
-            // Nouveau point 
             if (patrolTimer <= 0 || Vector3.Distance(transform.position, patrolTarget) < 0.5f)
                 NewPatrolPoint();
         }
 
-        // Orientation mob sur horizontalr
-        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+        // Regarde le joueur uniquement si détecté
+        if (dist <= detectionRange)
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
     }
 
-    // Balade du mob
+    // Nouveau point 
     void NewPatrolPoint()
     {
-        Vector2 rnd = Random.insideUnitCircle * patrolRadius;  // Point aléatoire dans cercle
+        Vector2 rnd = Random.insideUnitCircle * patrolRadius;
         patrolTarget = transform.position + new Vector3(rnd.x, 0, rnd.y);
-        patrolTimer = changePatrolTime;                        // Réinitialise timer
+        patrolTimer = changePatrolTime;
     }
 
-    // Collision joueur pour plus tard
+    // Collision avec le joueur
     void OnCollisionEnter(Collision c)
     {
         if (c.collider.CompareTag("Player"))
-            Debug.Log(" Mob a touché coulé !");
+        {
+            Debug.Log("mob à touché coulé");
+            SceneManager.LoadScene("FightScene");
+        }
     }
-
-    // Gizmos
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

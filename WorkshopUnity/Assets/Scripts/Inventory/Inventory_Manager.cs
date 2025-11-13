@@ -26,7 +26,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (inventorySlotPrefab == null || contentParent == null)
         {
-            Debug.LogWarning("⚠️ prefab ou Content non assigné !");
+            Debug.LogWarning("prefab manquante");
             return;
         }
 
@@ -48,7 +48,7 @@ public class InventoryManager : MonoBehaviour
                 slots.Add(itemName, slotUI);
             }
 
-            Debug.Log($"🧱 Nouveau slot ajouté : {itemName}");
+            Debug.Log($"Nouveau slot ajouté : {itemName}");
         }
     }
 

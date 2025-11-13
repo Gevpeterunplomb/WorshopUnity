@@ -27,6 +27,19 @@ public class player_controller : MonoBehaviour
     public float fovChangeSpeed = 7f;
     private float currentFOV;
 
+    // 🎯 --- COLLISION CAMÉRA ---
+    [Header("Collision Caméra")]
+    public Transform cameraPivot;           // Empty derrière la tête du joueur
+    public float cameraHeight = 1.7f;       // Hauteur caméra (position Y)
+    public float cameraDistance = 3f;       // Distance caméra (position Z)
+    public float cameraAngleX = 15f;        // Inclinaison manuelle (rotation X)
+    public float minDistance = 0.3f;        // Distance minimale si collision
+    public float smoothSpeed = 10f;         // Vitesse retour caméra
+    public LayerMask collisionMask;         // Masque des obstacles
+
+    private float currentDistance;          // Distance dynamique actuelle
+    // 🎯 --- FIN COLLISION CAMÉRA ---
+
 
     void Start()
     {
@@ -38,7 +51,11 @@ public class player_controller : MonoBehaviour
 
         // Initialise le FOV
         currentFOV = normalFOV;
-        playerCamera.fieldOfView = currentFOV;
+        if (playerCamera != null)
+            playerCamera.fieldOfView = currentFOV;
+
+        // Initialise la distance actuelle à la valeur manuelle
+        currentDistance = cameraDistance;
     }
 
     void Update()
@@ -88,7 +105,8 @@ public class player_controller : MonoBehaviour
         // Rotation caméra
         rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookYLimit, lookYLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        if (playerCamera != null)
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX + cameraAngleX, 0, 0);
 
         float mouseY = Input.GetAxis("Mouse X") * lookSpeed;
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + mouseY, 0);
@@ -96,6 +114,49 @@ public class player_controller : MonoBehaviour
         // FOV
         float targetFOV = isRunning ? runFOV : normalFOV;
         currentFOV = Mathf.Lerp(currentFOV, targetFOV, Time.deltaTime * fovChangeSpeed);
-        playerCamera.fieldOfView = currentFOV;
+        if (playerCamera != null)
+            playerCamera.fieldOfView = currentFOV;
+    }
+
+    void LateUpdate()
+    {
+        HandleCameraCollision();
+    }
+
+    // 🎥 --- GESTION COLLISION CAMÉRA ---
+    void HandleCameraCollision()
+    {
+        if (playerCamera == null || cameraPivot == null)
+            return;
+
+        // Point de départ (hauteur manuelle)
+        Vector3 pivotPos = cameraPivot.position + Vector3.up * cameraHeight;
+
+        // Position théorique sans collision (distance manuelle)
+        Vector3 desiredPosition = pivotPos - cameraPivot.forward * cameraDistance;
+
+        // Vérifie s'il y a un obstacle entre le pivot et la caméra
+        if (Physics.Linecast(pivotPos, desiredPosition, out RaycastHit hit, collisionMask))
+        {
+            float hitDist = Vector3.Distance(pivotPos, hit.point) - 0.1f;
+            currentDistance = Mathf.Clamp(hitDist, minDistance, cameraDistance);
+        }
+        else
+        {
+            currentDistance = Mathf.Lerp(currentDistance, cameraDistance, Time.deltaTime * smoothSpeed);
+        }
+
+        // Met à jour position caméra
+        playerCamera.transform.position = pivotPos - cameraPivot.forward * currentDistance;
+    }
+
+    // Gizmos debug
+    void OnDrawGizmosSelected()
+    {
+        if (cameraPivot != null && playerCamera != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(cameraPivot.position, playerCamera.transform.position);
+        }
     }
 }
