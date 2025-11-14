@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using WU.Level;
 using WU.Skills;
@@ -75,7 +74,7 @@ namespace WU.Monsters
             if (CurrentHealth == 0)
                 Die();
             
-            OnHealthChange?.Invoke(amount);
+            OnHealthChange?.Invoke(CurrentHealth);
         }
 
         public void AddOrRemoveSpiritForce(int amount)

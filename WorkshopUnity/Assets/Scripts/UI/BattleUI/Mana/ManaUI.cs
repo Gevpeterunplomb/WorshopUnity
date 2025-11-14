@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using WU.Monsters;
 
-namespace WU.UI.BattleUI.Mana
+namespace WU.UI.BattleUI
 {
     public class ManaUI : MonoBehaviour
     {

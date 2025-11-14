@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using WU.Monsters;
 
-namespace WU.Skills.MaskThrow
+namespace WU.Skills
 {
     [CreateAssetMenu(menuName = "WU/Skills/MaskThrow")]
     public class MaskThrowData : SkillData

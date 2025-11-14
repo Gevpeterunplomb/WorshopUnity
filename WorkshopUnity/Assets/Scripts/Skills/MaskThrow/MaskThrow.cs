@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using WU.Monsters;
 
-namespace WU.Skills.MaskThrow
+namespace WU.Skills
 {
     public class MaskThrow : Skill<MaskThrowData>
     {

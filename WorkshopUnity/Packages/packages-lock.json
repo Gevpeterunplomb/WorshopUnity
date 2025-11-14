@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "com.helteix.channeled-properties": {
+      "version": "2.0.9",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.helteix.tools": "1.4.0",
+        "com.unity.burst": "1.8.25"
+      },
+      "url": "https://upm.pckgs.io"
+    },
+    "com.helteix.tools": {
+      "version": "1.4.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://upm.pckgs.io"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -17,7 +34,7 @@
     },
     "com.unity.burst": {
       "version": "1.8.25",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",

@@ -1,10 +1,8 @@
-﻿using System;
-using UnityEngine;
-using WU.Level;
+﻿using UnityEngine;
 using WU.Monsters;
 using WU.Skills;
 
-namespace WU.UI.BattleUI.Skills
+namespace WU.UI.BattleUI
 {
     public class SkillPanelUI : BattlePanelUI
     {

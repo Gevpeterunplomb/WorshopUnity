@@ -315,6 +315,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
   itemText: {fileID: 1384034698040844746}
-  itemName: 
-  quantity: 1
-  description: 

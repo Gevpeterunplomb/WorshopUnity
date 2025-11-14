@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using WU.Level;
 using WU.Monsters;
 
-namespace WU.UI.BattleUI.Skills
+namespace WU.UI.BattleUI
 {
     public class OverchargeUI : MonoBehaviour
     {
