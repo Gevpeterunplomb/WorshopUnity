@@ -8,10 +8,14 @@ namespace WU.InventorySystem
     {
         [field: SerializeField]
         public int HealAmount { get; private set; }
+        
+        [field: SerializeField]
+        public int RegenSpiritAmount { get; private set; }
 
         public override void Use()
         {
             BattleManager.instance.currentMonster.AddOrRemoveHealth(HealAmount);
+            BattleManager.instance.currentMonster.AddOrRemoveSpiritForce(RegenSpiritAmount);
         }
     }
 }
