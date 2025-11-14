@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587be003ac045b1b2cb67dc8625f344, type: 3}
   m_Name: StruggleData
   m_EditorClassIdentifier: WU.Core::WU.Skills.MaskThrowData
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Struggle
   <Description>k__BackingField: 
   <SpiritForceCost>k__BackingField: 7
   <OverchargeGain>k__BackingField: 2

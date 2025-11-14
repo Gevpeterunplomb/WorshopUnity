@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587be003ac045b1b2cb67dc8625f344, type: 3}
   m_Name: LittleRoarData
   m_EditorClassIdentifier: WU.Core::WU.Skills.MaskThrow.MaskThrowData
-  <Name>k__BackingField: LittleRoar
+  <Name>k__BackingField: Little Roar
   <Description>k__BackingField: 
   <SpiritForceCost>k__BackingField: 5
-  <OverchargeGain>k__BackingField: 4
+  <OverchargeGain>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   <Targets>k__BackingField: 2
   <Damage>k__BackingField: 0

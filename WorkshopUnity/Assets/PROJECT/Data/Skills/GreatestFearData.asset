@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d587be003ac045b1b2cb67dc8625f344, type: 3}
-  m_Name: PrimalRoarData
+  m_Name: GreatestFearData
   m_EditorClassIdentifier: WU.Core::WU.Skills.MaskThrowData
-  <Name>k__BackingField: Primal Roar
+  <Name>k__BackingField: Greatest Fear
   <Description>k__BackingField: 
-  <SpiritForceCost>k__BackingField: 9
-  <OverchargeGain>k__BackingField: 4
+  <SpiritForceCost>k__BackingField: 7
+  <OverchargeGain>k__BackingField: 3
   <Icon>k__BackingField: {fileID: 0}
   <Targets>k__BackingField: 0
   <Damage>k__BackingField: 13
