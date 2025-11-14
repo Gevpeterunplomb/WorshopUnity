@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Helteix.ChanneledProperties.Priorities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using WU.Monsters;
@@ -54,6 +55,18 @@ namespace WU.Level
                 Destroy(this);
             }
         }
+        
+        private void OnEnable()
+        {
+            GameController.CursorLockModePriority.AddPriority(this, PriorityTags.Highest);
+            GameController.CursorVisibleStatePriority.AddPriority(this, PriorityTags.Highest);
+        }
+
+        private void OnDisable()
+        {
+            GameController.CursorLockModePriority.RemovePriority(this);
+            GameController.CursorVisibleStatePriority.RemovePriority(this);
+        }
 
         private IEnumerator Start()
         {
@@ -63,8 +76,9 @@ namespace WU.Level
             
             Execute();
 
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            
+            GameController.CursorLockModePriority.Write(this, CursorLockMode.None);
+            GameController.CursorVisibleStatePriority.Write(this, true);
         }
 
         public void Begin()

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using WU.Level;
-using WU.Monsters;
 
-namespace WU.Inventory.Data
+namespace WU.InventorySystem
 {
     [CreateAssetMenu(menuName = "WU/Inventory/Item")]
     public class RedBerry : InventoryItemData
@@ -10,9 +9,9 @@ namespace WU.Inventory.Data
         [field: SerializeField]
         public int HealAmount { get; private set; }
 
-        public override void Use(BattleManager manager)
+        public override void Use()
         {
-            manager.currentMonster.AddOrRemoveHealth(HealAmount);
+            BattleManager.instance.currentMonster.AddOrRemoveHealth(HealAmount);
         }
     }
 }

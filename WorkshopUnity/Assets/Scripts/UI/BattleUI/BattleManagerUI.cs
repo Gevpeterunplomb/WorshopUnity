@@ -4,10 +4,6 @@ using UnityEngine;
 using WU.Level;
 using WU.Monsters;
 using WU.Skills;
-using WU.UI.BattleUI.LifePoints;
-using WU.UI.BattleUI.MainPanel;
-using WU.UI.BattleUI.Mana;
-using WU.UI.BattleUI.Skills;
 
 namespace WU.UI.BattleUI
 {
@@ -85,6 +81,7 @@ namespace WU.UI.BattleUI
             currentMonster = playerMonster;
             skillPanel.Initialize(this, playerMonster);
             mainPanel.Initialize(this, playerMonster);
+            
             manaUI.Initialize(playerMonster);
             hpMonsterUI.Initialize(playerMonster);
             overchargeUI.Initialize(playerMonster);

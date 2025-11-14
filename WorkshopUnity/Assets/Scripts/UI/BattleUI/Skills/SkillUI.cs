@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using WU.Monsters;
 using WU.Skills;
 
-namespace WU.UI.BattleUI.Skills
+namespace WU.UI.BattleUI
 {
     public class SkillUI : MonoBehaviour
     {

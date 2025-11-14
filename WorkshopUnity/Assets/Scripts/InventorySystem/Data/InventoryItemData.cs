@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using WU.Level;
-using WU.Monsters;
 
-namespace WU.Inventory.Data
+namespace WU.InventorySystem
 {
     public abstract class InventoryItemData : ScriptableObject
     {
@@ -16,7 +14,7 @@ namespace WU.Inventory.Data
         public Sprite Icon { get; private set; }
 
 
-        public abstract void Use(BattleManager manager);
+        public abstract void Use();
         
     }
 }
