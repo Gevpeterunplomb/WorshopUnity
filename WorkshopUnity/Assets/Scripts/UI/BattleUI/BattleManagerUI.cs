@@ -28,7 +28,7 @@ namespace WU.UI.BattleUI
         
         [SerializeField]
         private HPMonsterUI  hpMonsterUI;
-
+        
         [SerializeField]
         private CanvasGroup canvasGroup;
         
