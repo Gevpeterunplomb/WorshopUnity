@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: WU.Core::WU.Monsters.MonsterData
   <Title>k__BackingField: 
   <Description>k__BackingField: 
-  <MaxHealth>k__BackingField: 20
-  <MaxSpiritForce>k__BackingField: 10
-  <Strength>k__BackingField: 2
-  <Defence>k__BackingField: 2
-  <Speed>k__BackingField: 2
-  <Prefab>k__BackingField: {fileID: 551038110805108210, guid: f320f774244a80a439354a7f4c95f1ea, type: 3}
+  <MaxHealth>k__BackingField: 98
+  <MaxSpiritForce>k__BackingField: 100
+  <Strength>k__BackingField: 80
+  <Defence>k__BackingField: 30
+  <Speed>k__BackingField: 44
+  <Prefab>k__BackingField: {fileID: 6039608152528471114, guid: 614a7cd508bb20342869db4fa9a2dbe5, type: 3}
   <Icon>k__BackingField: {fileID: 0}
   <Skills>k__BackingField:
   - {fileID: 11400000, guid: ba694046ca196c84ca7e83dfca737498, type: 2}

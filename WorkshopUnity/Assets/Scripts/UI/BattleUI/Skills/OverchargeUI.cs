@@ -28,7 +28,7 @@ namespace WU.UI.BattleUI
             isCompletedOvercharge = 
                 battleManager.CurrentOvercharge ==
                 battleManager.MaxOvercharge;
-            overchargeAmount.text = $"Overcharge : {battleManager.CurrentOvercharge} / {battleManager.MaxOvercharge}";
+            overchargeAmount.text = $"{battleManager.CurrentOvercharge} / {battleManager.MaxOvercharge}";
             fill.fillAmount = (float)battleManager.CurrentOvercharge / battleManager.MaxOvercharge;
 
             bool hasEnoughOvercharge = battleManager.CurrentOvercharge > 0;
