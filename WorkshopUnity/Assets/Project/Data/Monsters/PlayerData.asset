@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: WU.Core::WU.Monsters.MonsterData
   <Title>k__BackingField: 
   <Description>k__BackingField: 
-  <MaxHealth>k__BackingField: 50
+  <MaxHealth>k__BackingField: 65
   <MaxSpiritForce>k__BackingField: 40
-  <Strength>k__BackingField: 40
+  <Strength>k__BackingField: 25
   <Defence>k__BackingField: 15
   <Speed>k__BackingField: 22
   <Prefab>k__BackingField: {fileID: 5881967658718805899, guid: ba5fcd031d88aac4889682706bc67c02, type: 3}

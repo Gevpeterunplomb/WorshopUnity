@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36ad7cb143a2454fa6d235f189d4eade, type: 3}
-  m_Name: New Red Berry
+  m_Name: SalmonData
   m_EditorClassIdentifier: WU.Core::WU.Inventory.Data.RedBerry
   <Title>k__BackingField: Red Berry
   <Description>k__BackingField: Une baie Rouge tabernak
   <Icon>k__BackingField: {fileID: 0}
   <HealAmount>k__BackingField: 10
+  <RegenSpiritAmount>k__BackingField: 10
