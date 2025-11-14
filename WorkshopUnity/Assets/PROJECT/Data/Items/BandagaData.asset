@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36ad7cb143a2454fa6d235f189d4eade, type: 3}
-  m_Name: RedBerryData
-  m_EditorClassIdentifier: WU.Core::WU.Inventory.Data.RedBerry
-  <Title>k__BackingField: Baie rouge
-  <Description>k__BackingField: Une baie rouge qui restaure 10PV
+  m_Name: BandagaData
+  m_EditorClassIdentifier: WU.Core::WU.InventorySystem.RedBerry
+  <Title>k__BackingField: Bandage
+  <Description>k__BackingField: Un bandage qui restaure 35PV
   <Icon>k__BackingField: {fileID: 0}
-  <HealAmount>k__BackingField: 10
+  <HealAmount>k__BackingField: 35
   <RegenSpiritAmount>k__BackingField: 0

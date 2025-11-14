@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ad7cb143a2454fa6d235f189d4eade, type: 3}
   m_Name: BlueBerryData
   m_EditorClassIdentifier: WU.Core::WU.InventorySystem.RedBerry
-  <Title>k__BackingField: 
-  <Description>k__BackingField: 
+  <Title>k__BackingField: Baie bleue
+  <Description>k__BackingField: Une baie bleue qui restaure 15 SF
   <Icon>k__BackingField: {fileID: 0}
   <HealAmount>k__BackingField: 0
-  <RegenSpiritAmount>k__BackingField: 30
+  <RegenSpiritAmount>k__BackingField: 15
