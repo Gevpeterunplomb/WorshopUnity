@@ -15,11 +15,14 @@ MonoBehaviour:
   <Title>k__BackingField: 
   <Description>k__BackingField: 
   <MaxHealth>k__BackingField: 50
-  <MaxSpiritForce>k__BackingField: 2
+  <MaxSpiritForce>k__BackingField: 150
   <Strength>k__BackingField: 30
   <Defence>k__BackingField: 25
   <Speed>k__BackingField: 10
   <Prefab>k__BackingField: {fileID: 1659353031932630444, guid: b63c65fed3aa05a4b842d4d5bc615141, type: 3}
   <Icon>k__BackingField: {fileID: 0}
   <Skills>k__BackingField:
-  - {fileID: 11400000, guid: ba694046ca196c84ca7e83dfca737498, type: 2}
+  - {fileID: 11400000, guid: cb3d16ef350eced4893f2c25f61c7b95, type: 2}
+  - {fileID: 11400000, guid: 14e7edf1775c3664aa4c078adfc044f5, type: 2}
+  - {fileID: 11400000, guid: c84ee71e02b8c554dbd48af7a4686298, type: 2}
+  - {fileID: 11400000, guid: 21aa721ce22a336409c168eb559a09a4, type: 2}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587be003ac045b1b2cb67dc8625f344, type: 3}
   m_Name: HolyPunchData
   m_EditorClassIdentifier: WU.Core::WU.Skills.MaskThrowData
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Holy Punch
   <Description>k__BackingField: 
-  <SpiritForceCost>k__BackingField: 0
+  <SpiritForceCost>k__BackingField: 9
   <OverchargeGain>k__BackingField: 0
   <Icon>k__BackingField: {fileID: 0}
   <Targets>k__BackingField: 0
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 25
